@@ -1,31 +1,44 @@
 #include<iostream>
+#include<cstdlib>
+
 using namespace std;
+
 int main() {
-    while (true) {
-        string type;
+    
+    bool repeat= true;
+    char answer;
+    while (repeat) {
+        char type;
         cout << "Choose a type: ";
         cout << "1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 - Division: ";
         cin >> type;
-        int number1;
-        int number2;
-        cin >> number1;
-        cin >> number2;
-        if (type == "1") {
-            int sum = number1 + number2;
-            cout << sum;
+        
+        double number1, number2;
+        cout << "Choose 2 numbers: ";
+        cin >> number1 >> number2;
+        
+        switch(type){
+            case '+':
+                cout << number1 + number2;
+                break;
+            case '-':
+                cout << number1 - number2;
+                break;
+            case '*':
+                cout << number1 * number2;
+                break;
+            case '/':
+                cout << number1 / number2;
+                break;
+            default:
+                cout << "Invalid input";
+                return EXIT_FAILURE;
         }
-        else if (type == "2") {
-            int sum = number1 - number2;
-            cout << sum;
-        }
-        else if (type == "3") {
-            int sum = number1 * number2;
-            cout << sum;
-        }
-        else if (type == "4") {
-            int sum = number1 / number2;
-            cout << sum;
-        }
-        cout << " \n";
+        cout << "\nDo you want to repeat? [y/n]: ";
+        cin >> answer;
+        if(tolower(answer) == 'n') 
+            repeat=false;
     }
+    
+    return EXIT_SUCCESS;
 }
